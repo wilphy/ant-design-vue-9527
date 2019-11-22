@@ -1,9 +1,13 @@
 <template>
-  <div>Header</div>
+  <div class="haeder">Header</div>
 </template>
 
 <script>
 export default {};
 </script>
 
-<style></style>
+<style scoped>
+.haeder {
+  float: right;
+}
+</style>
