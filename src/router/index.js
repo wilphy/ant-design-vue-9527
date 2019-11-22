@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import NotFound from "../views/404.vue";
 
 Vue.use(VueRouter);
 
@@ -104,6 +105,11 @@ const routes = [
         ]
       }
     ]
+  },
+  {
+    path: "*",
+    name: "404",
+    component: NotFound
   },
   {
     path: "/about",
