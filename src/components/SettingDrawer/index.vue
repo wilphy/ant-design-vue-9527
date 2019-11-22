@@ -20,16 +20,16 @@
             @change="e => handleSettingChange('navTheme', e.target.value)"
           >
             <h2>整体风格定制</h2>
-            <a-radio :style="radioStyle" value="dark">黑色</a-radio>
-            <a-radio :style="radioStyle" value="light">白色</a-radio>
+            <a-radio value="dark">黑色</a-radio>
+            <a-radio value="light">白色</a-radio>
           </a-radio-group>
           <a-radio-group
             :value="$route.query.navLayout || 'left'"
             @change="e => handleSettingChange('navLayout', e.target.value)"
           >
             <h2>导航模式</h2>
-            <a-radio :style="radioStyle" value="left">左侧导航</a-radio>
-            <a-radio :style="radioStyle" value="top">顶部导航</a-radio>
+            <a-radio value="left">左侧导航</a-radio>
+            <a-radio value="top">顶部导航</a-radio>
           </a-radio-group>
         </div>
       </div>
