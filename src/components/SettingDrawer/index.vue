@@ -12,12 +12,31 @@
           <a-icon :type="visible ? 'close' : 'setting'"></a-icon>
         </div>
       </template>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
+
+      <div>
+        <div>
+          <a-radio-group
+            :value="$route.query.navTheme || 'dark'"
+            @change="e => handleSettingChange('navTheme', e.target.value)"
+          >
+            <h2>整体风格定制</h2>
+            <a-radio :style="radioStyle" value="dark">黑色</a-radio>
+            <a-radio :style="radioStyle" value="light">白色</a-radio>
+          </a-radio-group>
+          <a-radio-group
+            :value="$route.query.navLayout || 'left'"
+            @change="e => handleSettingChange('navLayout', e.target.value)"
+          >
+            <h2>导航模式</h2>
+            <a-radio :style="radioStyle" value="left">左侧导航</a-radio>
+            <a-radio :style="radioStyle" value="top">顶部导航</a-radio>
+          </a-radio-group>
+        </div>
+      </div>
     </a-drawer>
   </div>
 </template>
+
 <script>
 export default {
   data() {
@@ -28,6 +47,9 @@ export default {
   methods: {
     onClose() {
       this.visible = false;
+    },
+    handleSettingChange(type, value) {
+      this.$router.push({ query: { ...this.$route.query, [type]: value } });
     }
   }
 };
