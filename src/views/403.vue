@@ -1,7 +1,13 @@
 <template>
   <div>
-    <h1>403</h1>
-    <h1>服务器拒绝了你的请求</h1>
+    <div class="box">
+      <a-alert
+        type="error"
+        message="403"
+        description="服务器拒绝了你的请求"
+        banner
+      />
+    </div>
   </div>
 </template>
 
@@ -9,4 +15,10 @@
 export default {};
 </script>
 
-<style></style>
+<style>
+.box {
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+</style>
