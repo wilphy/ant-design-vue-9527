@@ -11,6 +11,7 @@ import {
   Menu,
   Alert
 } from "ant-design-vue";
+import Auth from "./directives/auth";
 
 Vue.config.productionTip = false;
 
@@ -21,6 +22,8 @@ Vue.use(Drawer);
 Vue.use(Radio);
 Vue.use(Menu);
 Vue.use(Alert);
+
+Vue.use(Auth);
 
 new Vue({
   router,
