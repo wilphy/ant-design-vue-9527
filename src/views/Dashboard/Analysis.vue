@@ -5,41 +5,48 @@
 </template>
 
 <script>
-import random from "lodash/random";
+import axios from "axios";
 import Chart from "../../components/Chart";
 
 export default {
   data() {
     return {
-      chartOption: {
-        title: {
-          text: "各类服饰销量"
-        },
-        tooltip: {},
-        xAxis: {
-          data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
-        },
-        yAxis: {},
-        series: [
-          {
-            name: "销量",
-            type: "bar",
-            data: [5, 20, 36, 10, 10, 20]
-          }
-        ]
-      }
+      chartOption: {}
     };
   },
   mounted() {
+    this.getChartData();
     this.interal = setInterval(() => {
-      this.chartOption.series[0].data = this.chartOption.series[0].data.map(
-        () => random(100)
-      );
-      this.chartOption = { ...this.chartOption };
+      this.getChartData();
     }, 3000);
   },
+  methods: {
+    getChartData() {
+      axios
+        .get("/api/dashboard/chart", { params: { ID: 123456 } })
+        .then(response => {
+          this.chartOption = {
+            title: {
+              text: "各类服饰销量"
+            },
+            tooltip: {},
+            xAxis: {
+              data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+            },
+            yAxis: {},
+            series: [
+              {
+                name: "销量",
+                type: "bar",
+                data: response.data
+              }
+            ]
+          };
+        });
+    }
+  },
   beforeDestroy() {
-    clearInterval(this.interal);
+    clearInterval(this.interval);
   },
   components: {
     Chart
