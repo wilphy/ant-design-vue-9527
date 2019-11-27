@@ -1,16 +1,22 @@
 <template>
-  <div ref="chartDom" style="height: 100px;"></div>
+  <div ref="chartDom" style="height: 400px;"></div>
 </template>
 
 <script>
-var echarts = require("echarts");
+import echarts from "echarts";
+import debounce from "lodash/debounce";
+import { addListener, removeListener } from "resize-detector";
+
 export default {
+  created() {
+    this.resize = debounce(this.resize, 300);
+  },
   mounted() {
     // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(this.$refs.chartDom);
-    // var myChart = echarts.init(document.getElementById("main"));
+    this.chart = echarts.init(this.$refs.chartDom);
+    addListener(this.$refs.chartDom, this.resize);
     // 绘制图表
-    myChart.setOption({
+    this.chart.setOption({
       title: {
         text: "ECharts 入门示例"
       },
@@ -27,6 +33,16 @@ export default {
         }
       ]
     });
+  },
+  beforeDestroy() {
+    removeListener(this.$refs.chartDom, this.resize);
+    this.chart.dispose();
+  },
+  methods: {
+    resize() {
+      console.log("resize");
+      this.chart.resize();
+    }
   }
 };
 </script>
