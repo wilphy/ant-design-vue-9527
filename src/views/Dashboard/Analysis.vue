@@ -1,9 +1,15 @@
 <template>
-  <div>分析页</div>
+  <div><Chart style="height: 400px;width: 960px;margin: 0 auto" /></div>
 </template>
 
 <script>
-export default {};
+import Chart from "../../components/Chart";
+
+export default {
+  components: {
+    Chart
+  }
+};
 </script>
 
 <style></style>
