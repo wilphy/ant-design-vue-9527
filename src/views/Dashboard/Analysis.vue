@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import requset from "../../utils/request.js";
 import Chart from "../../components/Chart";
 
 export default {
@@ -22,27 +22,29 @@ export default {
   },
   methods: {
     getChartData() {
-      axios
-        .get("/api/dashboard/chart", { params: { ID: 123456 } })
-        .then(response => {
-          this.chartOption = {
-            title: {
-              text: "各类服饰销量"
-            },
-            tooltip: {},
-            xAxis: {
-              data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
-            },
-            yAxis: {},
-            series: [
-              {
-                name: "销量",
-                type: "bar",
-                data: response.data
-              }
-            ]
-          };
-        });
+      requset({
+        url: "/api/dashboard/chart",
+        method: "GET",
+        params: { ID: 123456 }
+      }).then(response => {
+        this.chartOption = {
+          title: {
+            text: "各类服饰销量"
+          },
+          tooltip: {},
+          xAxis: {
+            data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+          },
+          yAxis: {},
+          series: [
+            {
+              name: "销量",
+              type: "bar",
+              data: response.data
+            }
+          ]
+        };
+      });
     }
   },
   beforeDestroy() {
