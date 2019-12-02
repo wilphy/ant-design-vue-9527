@@ -11,7 +11,8 @@ import {
   Menu,
   Alert,
   Form,
-  Input
+  Input,
+  Select
 } from "ant-design-vue";
 import Auth from "./directives/auth";
 
@@ -26,6 +27,7 @@ Vue.use(Menu);
 Vue.use(Alert);
 Vue.use(Form);
 Vue.use(Input);
+Vue.use(Select);
 
 Vue.use(Auth);
 
