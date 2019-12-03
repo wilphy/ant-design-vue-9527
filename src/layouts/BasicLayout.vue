@@ -9,7 +9,10 @@
         v-model="collapsed"
         width="256px"
       >
-        <div class="logo">Ant Design Vue</div>
+        <div class="logo">
+          <IconFont_Logo type="icon-LOGOyouyongba" />
+          Ant Design Vue
+        </div>
         <SiderMenu :theme="navTheme" />
       </a-layout-sider>
       <a-layout>
@@ -73,10 +76,11 @@ export default {
   background: #eeeeee;
 }
 .logo {
-  height: 64x;
+  height: 64px;
   line-height: 64px;
   text-align: center;
   overflow: hidden;
+  font-weight: bolder;
 }
 .nav-theme-dark >>> .logo {
   color: #eeeeee;

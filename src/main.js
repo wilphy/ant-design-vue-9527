@@ -31,6 +31,16 @@ Vue.use(Select);
 
 Vue.use(Auth);
 
+const IconFont_404 = Icon.createFromIconfontCN({
+  scriptUrl: "//at.alicdn.com/t/font_1543883_hbr3zdlopwf.js"
+});
+Vue.component("IconFont_404", IconFont_404);
+
+const IconFont_Logo = Icon.createFromIconfontCN({
+  scriptUrl: "//at.alicdn.com/t/font_1543883_e5mc4qi4pjp.js"
+});
+Vue.component("IconFont_Logo", IconFont_Logo);
+
 new Vue({
   router,
   store,
